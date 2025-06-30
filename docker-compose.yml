@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+  # 1. データベース(MySQL)のサービス
+  db:
+    image: mysql:8.0
+    container_name: my-wp-db
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "wordpress_db"
+      MYSQL_USER: "wordpress_user"
+      MYSQL_PASSWORD: "password"
+    restart: always
+    networks:
+      - wpsite
+
+  # 2. WordPressのサービス
+  wordpress:
+    image: wordpress:latest # 最新版のWordPressイメージ
+    container_name: my-wp-site
+    depends_on:
+      - db
+    ports:
+      - "8000:80" # PCの8000番ポートをコンテナの80番ポートに接続
+    volumes:
+      - ./wordpress:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: "db:3306" # サービス名'db'を指定
+      WORDPRESS_DB_NAME: "wordpress_db"
+      WORDPRESS_DB_USER: "wordpress_user"
+      WORDPRESS_DB_PASSWORD: "password"
+      WORDPRESS_TABLE_PREFIX: "wp_"
+    restart: always
+    networks:
+      - wpsite
+
+  # 3. (オプション) データベース管理ツール(phpMyAdmin)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: my-wp-phpmyadmin
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: "db"
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: "password"
+    restart: always
+    networks:
+      - wpsite
+
+volumes:
+  db_data:
+
+networks:
+  wpsite:
