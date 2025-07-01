@@ -19,6 +19,9 @@
 # プラグインディレクトリを無視する
 /wordpress/wp-content/plugins/
 
+# アップロードディレクトリを無視する
+/wordpress/wp-content/uploads/
+
 # 言語ディレクトリを無視する
 /wordpress/wp-content/languages/
 
