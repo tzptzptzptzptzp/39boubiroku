@@ -1,0 +1,44 @@
+/* 
+ * カスタムスタイル - 管理バーを画面下部に配置
+ */
+
+/* 管理バーを画面下部に固定表示 */
+#wpadminbar {
+  top: auto !important;
+  bottom: 0 !important;
+  position: fixed !important;
+  width: 100% !important;
+  z-index: 99999 !important;
+}
+
+/* サブメニューが下から上に開くように調整 */
+#wpadminbar .ab-sub-wrapper {
+  bottom: 32px !important;
+  top: auto !important;
+}
+
+/* 管理バーの高さ分だけフッターにパディングを追加（オプション） */
+html,
+body {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* モバイル表示時の調整 */
+@media screen and (max-width: 782px) {
+  #wpadminbar {
+    height: 46px !important;
+  }
+  body {
+    margin-bottom: 46px !important;
+  }
+  #wpadminbar .ab-sub-wrapper {
+    bottom: 46px !important;
+  }
+}
+
+/* サブメニューが正しく表示されるように調整 */
+#wpadminbar .menupop .ab-sub-wrapper,
+#wpadminbar .shortlink-input {
+  margin-top: 0 !important;
+}
