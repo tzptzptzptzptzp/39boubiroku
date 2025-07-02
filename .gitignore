@@ -1,0 +1,51 @@
+# ----------------------------------------------------------------
+# WordPress Core and other generated files
+# ----------------------------------------------------------------
+
+# WordPressディレクトリ全体を無視する（自作テーマを除く）
+/wordpress/*
+
+# ただし、自作テーマを管理下に置くため、パスを段階的に「無視しない」ようにする
+!/wordpress/wp-content/
+!/wordpress/wp-content/themes/
+!/wordpress/wp-content/themes/39boubiroku/
+
+# デフォルトテーマや不要なファイルを無視する
+# (`*`を使って、themes内のデフォルトテーマをまとめて無視)
+/wordpress/wp-content/themes/twenty*
+/wordpress/wp-content/themes/index.php
+/wordpress/wp-content/index.php
+
+# プラグインディレクトリを無視する
+/wordpress/wp-content/plugins/
+
+# アップロードディレクトリを無視する
+/wordpress/wp-content/uploads/
+
+# 言語ディレクトリを無視する
+/wordpress/wp-content/languages/
+
+# ----------------------------------------------------------------
+# Node.js (for Tailwind CSS build)
+# ----------------------------------------------------------------
+
+# npmでインストールされたパッケージ
+/wordpress/wp-content/themes/39boubiroku/node_modules/
+
+# ログファイルなど
+/wordpress/wp-content/themes/39boubiroku/npm-debug.log*
+/wordpress/wp-content/themes/39boubiroku/yarn-debug.log*
+/wordpress/wp-content/themes/39boubiroku/yarn-error.log*
+
+# ----------------------------------------------------------------
+# Environment files
+# ----------------------------------------------------------------
+.env
+.env.*
+*.env
+
+# ----------------------------------------------------------------
+# OS generated files
+# ----------------------------------------------------------------
+.DS_Store
+Thumbs.db
