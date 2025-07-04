@@ -7,7 +7,7 @@
 <nav>
     <ul class="flex justify-around items-center">
         <li>
-            <button data-category-selector="money" class="cursor-pointer duration-300 opacity-30 hover:opacity-100 hover:scale-x-110">
+            <button data-category-selector="money" class="translate-y-[6px] cursor-pointer duration-300 opacity-30 hover:opacity-100 hover:scale-x-110">
                 <?php get_template_part('src/logos/money'); ?>
             </button>
         </li>
@@ -17,7 +17,7 @@
             </button>
         </li>
         <li>
-            <a href="/" class="block -translate-y-0.5 duration-300 hover:scale-x-105">
+            <a href="/" class="block -translate-y-1 duration-300 hover:scale-x-105">
                 <?php get_template_part('src/logos/39boubiroku'); ?>
             </a>
         </li>
