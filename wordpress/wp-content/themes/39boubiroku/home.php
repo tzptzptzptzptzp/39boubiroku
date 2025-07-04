@@ -24,6 +24,9 @@
     .u-home-post-item {
         box-shadow: 0px 1px 3px rgba(0, 0, 0, .1), 0px 1px 2px rgba(0, 0, 0, .1), 6px 12px 3px 0px rgba(0, 0, 0, 0.03), 10px 10px 25px 0px rgba(0, 0, 0, 0.1);
     }
+    .u-home-post-item:hover {
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, .1), 0px 1px 2px rgba(0, 0, 0, .1), 6px 12px 3px 0px rgba(0, 0, 0, 0.03), 10px 10px 25px 0px rgba(0, 0, 0, 0.1), 0px 3px 5px 2px rgba(0, 0, 50, .1);
+    }
     .u-home-post-item .u-home-post-item__overlay, .u-home-post-item .u-home-post-item__description {
         transition-duration: 300ms;
     }
