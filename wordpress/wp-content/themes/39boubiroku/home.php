@@ -1,17 +1,34 @@
 <?php get_header(); ?>
 
 <style>
-    .category-content {
-        display: none;
+    .u-home-post-list {
+        transform: translateY(10px);
+        opacity: 0;
+        pointer-events: none;
+        transition-duration: 500ms;
     }
-    .category-content.active {
-        display: block;
+    .u-home-post-list .u-home-post-item {
+        pointer-events: none;
+    }
+    .u-home-post-list.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    .u-home-post-list.active .u-home-post-item {
+        pointer-events: auto;
     }
     .u-home-post-item {
-        box-shadow: 0px 1px 3px rgba(0, 0, 0, .25), 0px 1px 2px rgba(0, 0, 0, .25), 6px 12px 3px 0px rgba(0, 0, 0, 0.03), 20px 20px 5px 0px rgba(0, 0, 0, 0.03);
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, .1), 0px 1px 2px rgba(0, 0, 0, .1), 6px 12px 3px 0px rgba(0, 0, 0, 0.03), 10px 10px 25px 0px rgba(0, 0, 0, 0.1);
     }
     .u-home-post-item .u-home-post-item__overlay, .u-home-post-item .u-home-post-item__description {
         transition-duration: 300ms;
+    }
+    .u-home-post-item {
+        border: white 1px solid;
+        transition-duration: 800ms;
+    }
+    .u-home-post-item:hover {
+        border: #DDD 1px solid;
     }
     .u-home-post-item .u-home-post-item__overlay {
         opacity: 0;
@@ -51,7 +68,7 @@
     <?php foreach ($categories as $category): ?>
         <div data-category-selector-contents="<?php echo esc_attr(
           $category,
-        ); ?>" class="category-content w-[88vw] max-w-[1280px]">
+        ); ?>" class="u-home-post-list absolute w-[88vw] max-w-[1280px]">
             <div class="grid grid-cols-4 gap-x-4 gap-y-40 w-full p-4">
                 <?php if (!empty($category_posts[$category])):
                   foreach ($category_posts[$category] as $post):
@@ -61,9 +78,7 @@
                     ); ?>" class="u-home-post-item overflow-hidden p-2 bg-white">
                         <div class="relative mb-1">
                             <?php if (has_post_thumbnail($post->ID)): ?>
-                                <img class="w-full h-full object-cover aspect-video" src="<?php the_post_thumbnail_url(
-                                  'medium',
-                                ); ?>" alt="サムネイル画像：<?php echo get_the_title($post); ?>" />
+                                <img class="w-full h-full object-cover aspect-video" src="<?php the_post_thumbnail_url('medium',); ?>" alt="サムネイル画像：<?php echo get_the_title($post); ?>" />
                             <?php else: ?>
                                 <div class="w-full h-full bg-gray-200 flex items-center justify-center aspect-video">
                                     <p class="text-gray-400">no image</p>
@@ -73,11 +88,7 @@
                                 <div class="u-home-post-item__overlay absolute inset-0 w-full h-full bg-black"></div>
                                 <div class="u-home-post-item__description relative">
                                     <p class="text-white">
-                                        <?php echo wp_trim_words(
-                                          get_the_excerpt($post),
-                                          120,
-                                          '...',
-                                        ); ?>
+                                        <?php echo wp_trim_words(get_the_excerpt($post),120,'...'); ?>
                                     </p>
                                 </div>
                             </div>
@@ -96,9 +107,7 @@
                                 }
                                 ?>
                             </p>
-                            <time class="u-home-post-item__time min-w-fit text-xs whitespace-nowrap"><?php the_time(
-                              'y/m/d',
-                            ); ?></time>
+                            <time class="u-home-post-item__time min-w-fit text-xs whitespace-nowrap"><?php the_time('y/m/d'); ?></time>
                         </div>
                     </a>
                 <?php
